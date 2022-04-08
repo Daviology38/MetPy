@@ -109,7 +109,7 @@ jobs:
 
     - name: Upload test log
       if: ${{ always() && steps.tests.outputs.LOG_AVAILABLE  == 'true' }}
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: log-nightly-tests-${{ matrix.python-version }}
         path: tests-${{ matrix.python-version }}.log
@@ -117,7 +117,7 @@ jobs:
 
     - name: Upload test images
       if: failure()
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: pypi-${{ matrix.python-version }}-nightly-images
         path: test_output/
@@ -239,7 +239,7 @@ jobs:
 
     - name: Upload build log
       if: ${{ always() && steps.build.outputs.LOG_AVAILABLE  == 'true' }}
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: log-nightly-docs-${{ matrix.python-version }}
         path: |
@@ -249,7 +249,7 @@ jobs:
 
     - name: Upload docs as artifact
       if: ${{ github.event_name == 'pull_request' }}
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: ${{ matrix.python-version }}-nightly-docs
         path: |
